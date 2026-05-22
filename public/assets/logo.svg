@@ -1,0 +1,41 @@
+<svg width="760" height="190" viewBox="0 0 760 190" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Ping Network</title>
+  <desc id="desc">Ping Network logo with connected blue nodes and wordmark.</desc>
+  <defs>
+    <linearGradient id="blueMark" x1="46" y1="151" x2="232" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0067DD"/>
+      <stop offset="1" stop-color="#21C9FF"/>
+    </linearGradient>
+    <linearGradient id="wordBlue" x1="366" y1="57" x2="715" y2="141" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#07182E"/>
+      <stop offset="1" stop-color="#031633"/>
+    </linearGradient>
+  </defs>
+
+  <g>
+    <path d="M36 95h78" stroke="url(#blueMark)" stroke-width="18" stroke-linecap="round"/>
+    <path d="M57 126h57" stroke="url(#blueMark)" stroke-width="18" stroke-linecap="round"/>
+    <path d="M78 157h35" stroke="url(#blueMark)" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="19" cy="95" r="8" fill="url(#blueMark)"/>
+    <circle cx="31" cy="126" r="8" fill="url(#blueMark)"/>
+    <path d="M114 94a62 62 0 1 1 58 63" stroke="url(#blueMark)" stroke-width="21" stroke-linecap="round"/>
+    <circle cx="163" cy="95" r="20" fill="url(#blueMark)"/>
+    <path d="M231 46a76 76 0 0 1 0 101" stroke="url(#blueMark)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M207 35a101 101 0 0 1 52 66 101 101 0 0 1-48 115" stroke="url(#blueMark)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M136 49c18-15 42-24 69-23" stroke="url(#blueMark)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M198 40l13 36 37 1 10 41-25 31 12 32" stroke="url(#blueMark)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M210 77l39 41M258 101l-25 5M233 149l-21-31" stroke="url(#blueMark)" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="198" cy="40" r="9" fill="#16BDF4"/>
+    <circle cx="211" cy="76" r="7" fill="#16BDF4"/>
+    <circle cx="248" cy="77" r="9" fill="#149BE8"/>
+    <circle cx="233" cy="106" r="7" fill="#149BE8"/>
+    <circle cx="258" cy="118" r="9" fill="#149BE8"/>
+    <circle cx="232" cy="149" r="7" fill="#149BE8"/>
+    <circle cx="246" cy="181" r="9" fill="#0C86E3"/>
+    <circle cx="136" cy="49" r="9" fill="#16BDF4"/>
+  </g>
+
+  <text x="306" y="126" fill="url(#wordBlue)" font-family="Inter, Arial, sans-serif" font-size="112" font-weight="850" letter-spacing="-2">Ping</text>
+  <circle cx="493" cy="43" r="13" fill="url(#blueMark)"/>
+  <text x="308" y="170" fill="#1599E8" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="25">NETWORK</text>
+</svg>

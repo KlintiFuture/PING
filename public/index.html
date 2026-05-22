@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ping Network provides professional IP ping checks, IPv4 subnet calculations, and MAC address lookups.">
+    <title>Ping Network</title>
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="/" aria-label="Ping Network home">
+        <img src="/assets/logo.svg" alt="Ping Network">
+      </a>
+
+      <div class="header-actions">
+        <span class="system-pill" id="clock">Network Console</span>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false" aria-label="Toggle background">
+          <span class="toggle-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img">
+              <path d="M12 3.25a.75.75 0 0 1 .75.75v1.2a.75.75 0 0 1-1.5 0V4a.75.75 0 0 1 .75-.75Zm0 15.8a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-1.2a.75.75 0 0 1 .75-.75ZM4 11.25h1.2a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1 0-1.5Zm14.8 0H20a.75.75 0 0 1 0 1.5h-1.2a.75.75 0 0 1 0-1.5ZM6.1 5.04a.75.75 0 0 1 1.06 0l.85.85a.75.75 0 0 1-1.06 1.06l-.85-.85a.75.75 0 0 1 0-1.06Zm9.89 9.89a.75.75 0 0 1 1.06 0l.85.85a.75.75 0 1 1-1.06 1.06l-.85-.85a.75.75 0 0 1 0-1.06Zm1.91-9.89a.75.75 0 0 1 0 1.06l-.85.85a.75.75 0 1 1-1.06-1.06l.85-.85a.75.75 0 0 1 1.06 0ZM8.01 14.93a.75.75 0 0 1 0 1.06l-.85.85a.75.75 0 0 1-1.06-1.06l.85-.85a.75.75 0 0 1 1.06 0ZM12 7.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5Z"/>
+            </svg>
+          </span>
+          <span id="themeLabel">Light</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro">
+        <div>
+          <p class="eyebrow">IP Diagnostics</p>
+          <h1>Ping Network</h1>
+        </div>
+        <nav class="tool-nav" aria-label="Network tools">
+          <a href="/ping" data-tool-link="ping">Ping IP</a>
+          <a href="/subnet" data-tool-link="subnet">Subnets & Hosts</a>
+          <a href="/mac-lookup" data-tool-link="mac">MAC Lookup</a>
+        </nav>
+      </section>
+
+      <section class="tool-grid" aria-label="Network tools">
+        <article class="tool-panel is-active" data-tool-panel="ping" aria-labelledby="pingTitle">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Reachability</p>
+              <h2 id="pingTitle">Ping IP</h2>
+            </div>
+            <span class="status-dot" id="pingStatus" aria-label="Ping status"></span>
+          </div>
+
+          <form class="form-stack" id="pingForm">
+            <label for="targetIp">IP Address</label>
+            <div class="input-row">
+              <input id="targetIp" name="target" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="8.8.8.8">
+              <button class="primary-button" type="submit">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4.5 12.75h9.69l-3.72 3.72a.75.75 0 1 0 1.06 1.06l5-5a.75.75 0 0 0 0-1.06l-5-5a.75.75 0 1 0-1.06 1.06l3.72 3.72H4.5a.75.75 0 0 0 0 1.5Z"/>
+                  <path d="M18.75 4.5a.75.75 0 0 0-1.5 0v15a.75.75 0 0 0 1.5 0v-15Z"/>
+                </svg>
+                Ping
+              </button>
+            </div>
+
+            <div class="compact-grid">
+              <div>
+                <label for="packetCount">Packets</label>
+                <input id="packetCount" name="count" type="number" min="1" max="5" value="4">
+              </div>
+              <div>
+                <label for="timeout">Timeout</label>
+                <input id="timeout" name="timeout" type="number" min="1" max="10" value="3">
+              </div>
+            </div>
+          </form>
+
+          <div class="metric-grid" id="pingMetrics">
+            <div>
+              <span>Status</span>
+              <strong>Ready</strong>
+            </div>
+            <div>
+              <span>Average</span>
+              <strong>-</strong>
+            </div>
+            <div>
+              <span>Loss</span>
+              <strong>-</strong>
+            </div>
+          </div>
+
+          <pre class="terminal" id="pingOutput">Awaiting ping request...</pre>
+        </article>
+
+        <article class="tool-panel" data-tool-panel="subnet" aria-labelledby="subnetTitle">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Addressing</p>
+              <h2 id="subnetTitle">Subnet Calculator</h2>
+            </div>
+            <span class="badge">IPv4</span>
+          </div>
+
+          <form class="form-stack" id="subnetForm">
+            <label for="cidrInput">IPv4 / CIDR</label>
+            <div class="input-row">
+              <input id="cidrInput" name="cidr" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" value="192.168.10.42/24">
+              <button class="secondary-button" type="submit">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5.25 4.5A2.25 2.25 0 0 1 7.5 2.25h9a2.25 2.25 0 0 1 2.25 2.25v15a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-15Zm2.25-.75a.75.75 0 0 0-.75.75V7.5h10.5v-3a.75.75 0 0 0-.75-.75h-9Zm9.75 5.25H6.75v10.5c0 .414.336.75.75.75h9a.75.75 0 0 0 .75-.75V9Zm-8.25 2.25a.75.75 0 0 1 .75-.75h.75a.75.75 0 0 1 0 1.5h-.75a.75.75 0 0 1-.75-.75Zm4.5 0a.75.75 0 0 1 .75-.75H15a.75.75 0 0 1 0 1.5h-.75a.75.75 0 0 1-.75-.75ZM9 15a.75.75 0 0 1 .75-.75h.75a.75.75 0 0 1 0 1.5h-.75A.75.75 0 0 1 9 15Zm4.5 0a.75.75 0 0 1 .75-.75H15a.75.75 0 0 1 0 1.5h-.75a.75.75 0 0 1-.75-.75Z"/>
+                </svg>
+                Calculate
+              </button>
+            </div>
+          </form>
+
+          <div class="quick-list" aria-label="Subnet examples">
+            <button type="button" data-cidr="10.24.18.9/20">10.24.18.9/20</button>
+            <button type="button" data-cidr="172.16.5.10/23">172.16.5.10/23</button>
+            <button type="button" data-cidr="192.168.55.14/27">192.168.55.14/27</button>
+          </div>
+
+          <div class="result-grid" id="subnetResults" aria-live="polite"></div>
+        </article>
+
+        <article class="tool-panel" data-tool-panel="mac" aria-labelledby="macTitle">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Inventory</p>
+              <h2 id="macTitle">MAC Lookup</h2>
+            </div>
+            <span class="badge">OUI</span>
+          </div>
+
+          <form class="form-stack" id="macForm">
+            <label for="macInput">MAC Address</label>
+            <div class="input-row">
+              <input id="macInput" name="mac" type="text" autocomplete="off" spellcheck="false" value="A4:5E:60:12:34:56">
+              <button class="secondary-button" type="submit">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M10.75 4.25a6.5 6.5 0 1 0 4.06 11.57l3.94 3.94a.75.75 0 0 0 1.06-1.06l-3.94-3.94a6.5 6.5 0 0 0-5.12-10.51Zm-5 6.5a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/>
+                  <path d="M8.25 10.75a2.5 2.5 0 0 1 2.5-2.5.75.75 0 0 0 0-1.5 4 4 0 0 0-4 4 .75.75 0 0 0 1.5 0Z"/>
+                </svg>
+                Lookup
+              </button>
+            </div>
+          </form>
+
+          <div class="quick-list" aria-label="MAC examples">
+            <button type="button" data-mac="00:50:56:8A:12:34">VMware</button>
+            <button type="button" data-mac="B8:27:EB:AA:BB:CC">Raspberry Pi</button>
+            <button type="button" data-mac="24:A4:3C:10:20:30">Ubiquiti</button>
+          </div>
+
+          <div class="result-grid" id="macResults" aria-live="polite"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
