@@ -1,9 +1,18 @@
 {
   "name": "ping-network",
   "version": "1.0.0",
-  "type": "module",
+  "description": "Professional networking utility website with ping and subnet calculator tools.",
+  "main": "server.js",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev"
-  }
+    "start": "node server.js",
+    "tunnel": "npx localtunnel --port 4173"
+  },
+  "keywords": [
+    "networking",
+    "ping",
+    "subnet",
+    "cidr"
+  ],
+  "author": "",
+  "license": "MIT"
 }
