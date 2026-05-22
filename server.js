@@ -226,7 +226,32 @@ function serveStatic(req, res) {
   });
 }
 
+const allowedOrigins = new Set([
+  "https://ping-net.netlify.app",
+]);
+
+function applyCors(req, res) {
+  const origin = req.headers.origin;
+
+  if (origin && allowedOrigins.has(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Vary", "Origin");
+  }
+
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+}
+
 const server = http.createServer((req, res) => {
+  applyCors(req, res);
+
+  // Handle preflight requests
+  if (req.method === "OPTIONS") {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
   if (req.method === "POST" && req.url === "/api/ping") {
     handlePing(req, res);
     return;
@@ -237,7 +262,10 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  sendJson(res, 405, { ok: false, error: "Method not allowed." });
+  sendJson(res, 405, {
+    ok: false,
+    error: "Method not allowed."
+  });
 });
 
 server.listen(PORT, HOST, () => {
